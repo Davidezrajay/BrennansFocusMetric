@@ -6,7 +6,7 @@ import javax.imageio.ImageIO;
 import java.io.PrintWriter;
 
 
-// Class that utilizes Brennan's Focus metric.
+// Class that utilizes Brenner's Focus metric.
 // This function returns a real valued number where empirical values indicate
 // that < 300 is questionable, 300-600 is "good", and > 600 is good. 
 // More stringent restrictions can be decided upon.
