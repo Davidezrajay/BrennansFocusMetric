@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 
 // Class that utilizes Brenner's Focus metric.
 // This function returns a real valued number where empirical values indicate
-// that < 300 is questionable, 300-600 is "good", and > 600 is good. 
+// that < 300 is questionable, 300-1000 is "good", and > 1000 is good. 
 // More stringent restrictions can be decided upon.
 
 
@@ -32,7 +32,7 @@ public class BrennersContrast {
 			int[][] pix = getGrayPixels(image);
 
 			//// COMPUTE METRIC.
-			//// subjective scale. < 300 is not good. 300 - 600 is ok, > 600 very good.
+			//// subjective scale. < 300 is not good. 300-1000 is ok, > 1000 very good.
 			////
 			double focusMetric = brennersFocusMetric(pix,rows,cols);
 			////
@@ -106,7 +106,7 @@ public class BrennersContrast {
 			for (int col = 0; col < cols; col++) {
 				double HRC = H[row][col];
 				double VRC = V[row][col];
-				sum  += HRC > VRC ? HRC * HRC : VRC * VRC;
+				sum  += Math.abs(HRC) > Math.abs(VRC) ? HRC * HRC : VRC * VRC;
 			}
 		}
 		return sum / (double)(rows * cols);
